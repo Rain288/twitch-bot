@@ -2,9 +2,10 @@
 A very simple twitch bot I made for a friend's stream using tmi.js .
 
 ## How to use
-* Clone the repo and then `node app.js`
+* Clone the repo
 * External modules used that should be installed with NPM are `request` and `tmi.js`
 * Customize `example_config.js` and when you're done rename it to `config.js`
+* `cd` into the directory and `nodejs app.js` or `node app.js` on Windows
 And that's about it
 
 ### Features
