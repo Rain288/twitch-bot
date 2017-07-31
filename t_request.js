@@ -6,12 +6,13 @@ module.exports = {
   isOnline: function(){
     var state = true;
     req(function(result){
+      var info = result;
       if(info.stream == null){
-        state = false
+        state = false;
       } else {
-        state = true
+        state = true;
       }
-      return state
+      return state;
     });
     
   },
