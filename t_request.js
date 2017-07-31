@@ -5,26 +5,29 @@ var config = require('./config')
 module.exports = {
   isOnline: function(){
     var state = true;
-    var info = req();
-    if(info.stream == null){
-      state = false
-    } else {
-      state = true
-    }
-    return state
+    req(function(result){
+      if(info.stream == null){
+        state = false
+      } else {
+        state = true
+      }
+      return state
+    });
+    
   },
   uptime: function(client, channel){
-    var info = req();
-    if(info.stream == null){
-      client.say(channel, "Channel offline!")
-    } else {
-      client.say(channel, misc.timediff(new Date(), info.stream.created_at))
-    }
+    req(function(result){
+      var info = result;
+      if(info.stream == null){
+        client.say(channel, "Channel offline!")
+      } else {
+        client.say(channel, misc.timediff(new Date(), info.stream.created_at))
+      }
+    });
   }
 }
 
-function req(){
-  var info = {};
+function req(cb){
   var opts = {
     url: 'https://api.twitch.tv/kraken/streams/' + config.main_channel_id,
     headers: {
@@ -32,11 +35,11 @@ function req(){
       'Authorization': 'OAuth ' + config.OAuth
     }
   }
-  function callback(error, response, body){
+  
+  request(opts, function (error, response, body){
     if(!error && response.statusCode == 200){
-      info = JSON.parse(body);
+      var info = JSON.parse(body);
+      cb(info);
     }
-  }
-  request(opts, callback);
-  return info;
+  });
 }
