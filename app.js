@@ -24,11 +24,11 @@ client.connect();
 
 //Event Handlers
 client.on("subscription", function(channel, username, method, message, userstate){
-  client.say(channel, user['display-name'] + " thanks for subbing! <3");
+  client.say(channel, userstate['display-name'] + " thanks for subbing! <3");
 })
 
 client.on('resub', function(channel, username, months, message, userstate, methods){
-  client.say(channel, user['display-name'] + " thanks for resubbing! <3 " + months + " months!");
+  client.say(channel, userstate['display-name'] + " thanks for resubbing! <3 " + months + " months!");
 })
 
 client.on("chat", function(channel, user, message, self){
