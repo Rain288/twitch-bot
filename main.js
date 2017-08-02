@@ -15,11 +15,13 @@ module.exports = {
     client.say(channel, "Twitter: " + config.twitter);
   },
   loopDiscord: function(client, channel){
+    console.log("loopDiscord triggered");
     if(check.isOnline()){
       client.say(channel, "Join my Discord server: " + config.discord);
     }
   },
   loopSocial: function(client, channel){
+    console.log("loopSocial triggered");
     if(check.isOnline()){
       client.say(channel, "Remember to follow the channel to see when I go live! Also follow me on Twitter: " + config.twitter)
     }
