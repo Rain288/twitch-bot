@@ -43,7 +43,7 @@ client.on("chat", function(channel, user, message, self){
   } else if (message === "!uptime"){
     tmreq.uptime(client, channel)
   } else if (message === "!online"){
-    client.say(channel, tmreq.isOnline())
+    client.say(channel, String(tmreq.isOnline()))
   } else if(!user.mod && !user.subscriber && (user.badges == null || user.badges.broadcaster != 1)) {
     var urlc = new RegExp("([a-zA-Z0-9]+://)?([a-zA-Z0-9_]+:[a-zA-Z0-9_]+@)?([a-zA-Z0-9.-]+\\.[A-Za-z]{2,4})(:[0-9]+)?(/.*)?")
     if(urlc.test(message)) {
