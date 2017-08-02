@@ -4,17 +4,14 @@ var config = require('./config')
 
 module.exports = {
   isOnline: function(){
-    var state = true;
     req(function(result){
       var info = result;
       if(info.stream == null){
-        state = false;
+        return false;
       } else {
-        state = true;
+        return true;
       }
-      return state;
     });
-    
   },
   uptime: function(client, channel){
     req(function(result){
