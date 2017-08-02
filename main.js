@@ -23,7 +23,10 @@ module.exports = {
   loopSocial: function(client, channel){
     console.log("loopSocial triggered");
     if(check.isOnline()){
+      console.log("Online!");
       client.say(channel, "Remember to follow the channel to see when I go live! Also follow me on Twitter: " + config.twitter)
+    } else {
+      console.log("Offline!");
     }
   }
 };
