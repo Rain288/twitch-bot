@@ -52,8 +52,8 @@ client.on("chat", function(channel, user, message, self){
 })
 
 client.on("connected", function(channel, user, message, self){
-  setInterval(main.loopSocial, 1200000, client, config.main_channel);
-  setTimeout(function(){setInterval(main.loopDiscord, 1200000, client, config.main_channel)}, 600000)
+  setInterval(main.loopSocial, 300000, self, config.main_channel);
+  setTimeout(function(){setInterval(main.loopDiscord, 1200000, self, config.main_channel)}, 600000)
 })
 
 client.on("disconnected", function(reason){
