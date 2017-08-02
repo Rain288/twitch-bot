@@ -3,13 +3,13 @@ var misc = require('./misc')
 var config = require('./config')
 
 module.exports = {
-  isOnline: function(){
+  isOnline: function(cb){
     req(function(result){
       var info = result;
       if(info.stream == null){
-        return false;
+        cb(false);
       } else {
-        return true;
+        cb(true);
       }
     });
   },
